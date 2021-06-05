@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-
 import { toast } from 'react-toastify';
-
 import { auth } from '../../firebase';
 
 const Register = () => {
@@ -39,6 +37,8 @@ const Register = () => {
           autoFocus
           placeholder="Enter Email"
         />
+
+        <br/>
         <button className="my-4 btn btn-raised btn-primary" type="submit">
           Register
         </button>
