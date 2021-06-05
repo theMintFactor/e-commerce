@@ -18,7 +18,12 @@ const Header = () => {
   };
 
   return (
-    <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal">
+    <Menu
+      onClick={handleClick}
+      selectedKeys={[current]}
+      mode="horizontal"
+      theme="dark"
+    >
       <Item key="home" icon={<AppstoreOutlined />}>
         <Link to="/">Home</Link>
       </Item>

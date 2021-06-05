@@ -1,4 +1,5 @@
-import * as firebase from 'firebase';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -9,6 +10,7 @@ const firebaseConfig = {
   messagingSenderId: '353005964682',
   appId: '1:353005964682:web:c71a877d965466c2884c73',
 };
+
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
