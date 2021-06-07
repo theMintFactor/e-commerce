@@ -5,14 +5,12 @@ import {
   SettingOutlined,
   AppstoreOutlined,
   UserAddOutlined,
+  LogoutOutlined,
 } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import firebase from 'firebase';
-import {useDispatch} from 'react-redux';
-import {useHistory} from 'react-router-dom';
-
-
-
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 const { SubMenu, Item } = Menu;
 
@@ -25,13 +23,13 @@ const Header = () => {
     setCurrent(e.key);
   };
 
-  const logout =()=>{
-    firebase.auth().signOut()
+  const logout = () => {
+    firebase.auth().signOut();
     dispatch({
-      type: "LOGGED_OUT",
+      type: 'LOGGED_OUT',
       payload: null,
     });
-    history.push("./login")
+    history.push('./login');
   };
 
   return (
@@ -55,7 +53,9 @@ const Header = () => {
       <SubMenu key="username" icon={<SettingOutlined />} title="Username">
         <Item key="setting:1">Option 1</Item>
         <Item key="setting:2">Option 2</Item>
-        <Item icon ={<UserOutlined/>} onClick={logout} >LogOut</Item>
+        <Item icon={<LogoutOutlined />} onClick={logout}>
+          LogOut
+        </Item>
       </SubMenu>
     </Menu>
   );

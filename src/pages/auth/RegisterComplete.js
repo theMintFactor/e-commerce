@@ -1,3 +1,4 @@
+import { Button } from 'antd';
 import React, { useEffect, useState } from 'react';
 
 import { toast } from 'react-toastify';
@@ -40,6 +41,14 @@ const RegisterComplete = ({ history }) => {
         // redux store
         console.log('user', user, 'idTokenResult', idTokenResult);
 
+        // dispatch({
+        //   type: 'LOGGED_IN_USER',
+        //   payload: {
+        //     email: user.email,
+        //     token: idTokenResult.token,
+        //   },
+        // });
+
         // redirect
         toast.success('Successfully Registered');
         history.push('/');
@@ -67,9 +76,16 @@ const RegisterComplete = ({ history }) => {
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Enter Password"
         />
-        <button className="my-4 btn btn-raised btn-primary" type="submit">
+        <Button
+          className="my-4 btn btn-raised btn-primary"
+          onClick={handleSubmit}
+          type="submit"
+          shape="round"
+          block
+          size="large"
+        >
           Complete Registration
-        </button>
+        </Button>
       </form>
     );
   };

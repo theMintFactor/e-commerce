@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import { auth } from '../../firebase';
+import { Button } from 'antd';
 
 const Register = () => {
   const [email, setEmail] = useState('');
@@ -38,10 +39,17 @@ const Register = () => {
           placeholder="Enter Email"
         />
 
-        <br/>
-        <button className="my-4 btn btn-raised btn-primary" type="submit">
+        <br />
+        <Button
+          className="my-4 btn btn-raised btn-primary"
+          onClick={handleSubmit}
+          block
+          shape="round"
+          type="submit"
+          size="large"
+        >
           Register
-        </button>
+        </Button>
       </form>
     );
   };
