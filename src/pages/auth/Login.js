@@ -3,14 +3,38 @@ import { toast } from 'react-toastify';
 import { auth } from '../../firebase';
 import { Button } from 'antd';
 import { LoginOutlined } from '@ant-design/icons';
+import {useDispatch} from 'react-redux';
 
-const Login = () => {
+const Login = ({history}) => {
   const [email, setEmail] = useState('mintu.krish999@gmail.com');
   const [password, setPassword] = useState('mintu12345');
+  const [loading, setLoading] = useState(false);
+
+  let dispatch = useDispatch()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(email, password);
+    setLoading(true)
+    //console.log(email, password);
+    try{
+      const result = await auth.signInWithEmailAndPassword(email,password);
+      console.log(result);
+      const {user} = result;
+      const idTokenResult = await user.getIdTokenResult();
+
+      dispatch({
+        type:"LOGGED_IN_USER",
+        payload: {
+          email:user.email,
+          token: idTokenResult.token,
+        }
+      });
+      history.push("/");
+    }catch(error){
+      console.log(error);
+      toast.error(error.message);
+      setLoading(false)
+    }
   };
 
   const loginForm = () => {
