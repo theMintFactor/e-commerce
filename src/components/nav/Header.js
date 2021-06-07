@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Menu } from 'antd';
+import { Menu, Typography } from 'antd';
 import {
   UserOutlined,
   SettingOutlined,
-  AppstoreOutlined,
+  HomeOutlined,
   UserAddOutlined,
   LogoutOutlined,
 } from '@ant-design/icons';
@@ -12,6 +12,7 @@ import firebase from 'firebase';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
+const { Title } = Typography;
 const { SubMenu, Item } = Menu;
 
 const Header = () => {
@@ -38,8 +39,17 @@ const Header = () => {
       selectedKeys={[current]}
       mode="horizontal"
       theme="dark"
+      style={{ background: '#002329' }}
     >
-      <Item key="home" icon={<AppstoreOutlined />}>
+      <Item key="logo" className="mx-3">
+        <Link to="/">
+          <Title level={3} className="m-2" type="success">
+            CROMA
+          </Title>
+        </Link>
+      </Item>
+
+      <Item key="home" icon={<HomeOutlined />}>
         <Link to="/">Home</Link>
       </Item>
 
@@ -50,7 +60,12 @@ const Header = () => {
         <Link to="/login">Login</Link>
       </Item>
 
-      <SubMenu key="username" icon={<SettingOutlined />} title="Username">
+      <SubMenu
+        key="username"
+        icon={<SettingOutlined />}
+        title="Username"
+        className="float-right"
+      >
         <Item key="setting:1">Option 1</Item>
         <Item key="setting:2">Option 2</Item>
         <Item icon={<LogoutOutlined />} onClick={logout}>
